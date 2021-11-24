@@ -1,7 +1,10 @@
 <h1 align="center">Microsserviços com Python, React e Kubernetes</h1>
 <h2 align="center">Exemplificando uma estrutura de microsserviços com Kubernetes</h2>
+<br />
 
-<img align="center" src="./assets/clap-mr-bean.gif" alt="Mr Bean clapping"/>
+<p align="center">
+  <img src="./assets/clap-mr-bean.gif" alt="Mr Bean clapping"/>
+</p>
 
 <br />
 
