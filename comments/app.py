@@ -4,8 +4,10 @@ from flask import jsonify
 import os
 import binascii
 import requests as http
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 comments = dict()
 
