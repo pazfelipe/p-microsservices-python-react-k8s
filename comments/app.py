@@ -39,6 +39,7 @@ def create(post_id):
     comment = {
         'content': content,
         'id': id,
+        'status': 'pending'
     }
 
     if post_id in comments:
@@ -51,7 +52,21 @@ def create(post_id):
     else:
         comments[post_id] = {'comments': [comment]}
 
+    comment['post'] = post_id
+
+    http.post(f'http://localhost:5002/events',
+              json={
+                  'type': 'CommentCreated',
+                  'content': comment}
+              )
+
     return jsonify(comment), 201
+
+
+@app.route('/events', methods=['POST'])
+def event():
+    print('Event type: ', request.json['type'])
+    return '', 204
 
 
 if __name__ == '__main__':

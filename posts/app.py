@@ -25,7 +25,11 @@ def create():
         'id': id
     }
 
-    http.post(f'http://localhost:5001/posts/{id}/comments', json={'post': id})
+    http.post(f'http://localhost:5002/events',
+              json={
+                  'type': 'PostCreated',
+                  'content': posts[id]}
+              )
 
     return jsonify(posts[id]), 201
 
@@ -36,6 +40,12 @@ def getPost(post):
         return jsonify(posts[post])
     except KeyError:
         return 'Post not found', 404
+
+
+@app.route('/events', methods=['POST'])
+def event():
+    print('Event type: ', request.json['type'])
+    return '', 204
 
 
 if __name__ == '__main__':
